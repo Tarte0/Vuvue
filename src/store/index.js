@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    nbQ: 1,
+    idQ: 1,
     questions: [
       {
         id: 0,

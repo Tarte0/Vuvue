@@ -1,17 +1,16 @@
 <template>
   <div>
-    <question-c
+    <c-question
       :question="question"
-      @remove="removeQuestion"
       @edit="editQuestion"
-    ></question-c>
-    <reponse-c></reponse-c>
+    ></c-question>
+    <c-answer></c-answer>
   </div>
 </template>
 
 <script>
-import QuestionC from './questionC'
-import ReponseC from './answerC'
+import CQuestion from './CreatedQuestion'
+import CAnswer from './CreatedAnswer'
 
 export default {
   name: 'QuestionCreator',
@@ -19,14 +18,13 @@ export default {
     question: {
       type: Object,
       required: true
+    },
+    answer: {
+      type: Object,
+      required: true
     }
   },
-  components: {ReponseC, QuestionC},
-  methods: {
-    removeQuestion (idToRemove) {
-      this.$store.commit('removeQuestion', idToRemove)
-    }
-  }
+  components: {CAnswer, CQuestion}
 }
 </script>
 

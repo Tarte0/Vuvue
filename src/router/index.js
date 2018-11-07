@@ -23,7 +23,7 @@ export default new Router({
       path: '/Creator',
       name: 'Creator',
       component: Form
-    }
+    },
     {
       path: '/Answers',
       name: 'Answers',

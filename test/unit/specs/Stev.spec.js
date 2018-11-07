@@ -6,6 +6,6 @@ describe('HelloWorld.vue', () => {
     const Constructor = Vue.extend(Stev)
     const vm = new Constructor().$mount()
     expect(vm.$el.querySelector('.msgDiv h1').textContent)
-      .toEqual('Tuez moi')
+      .toEqual('zsedrftg')
   })
 })

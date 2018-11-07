@@ -3,8 +3,9 @@
     <c-question
       :question="question"
       @edit="editQuestion"
-    ></c-question>
-    <c-answer></c-answer>
+    />
+    <br/>
+    <c-answer/>
   </div>
 </template>
 

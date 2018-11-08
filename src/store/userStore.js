@@ -5,20 +5,34 @@ Vue.use(Vuex)
 
 const formEntries = [
   {
-    question: {title: 'C\'est une kestion'},
-    answer: {type: 'radioButton', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]}
+    question: {title: 'Question 1'},
+    answer: {type: 'radioButton', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
+    id: 'Q1',
+    alreadyAnswered: false
   },
   {
-    question: {title: 'C\'est une deuziem kestion'},
-    answer: {type: 'checkBox', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]}
+    question: {title: 'Question 2'},
+    answer: {type: 'checkBox', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
+    id: 'Q2',
+    alreadyAnswered: false
   },
   {
-    question: {title: 'C\'est une 3 kestion'},
-    answer: {type: 'text', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]}
+    question: {title: 'Question 3'},
+    answer: {type: 'text', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
+    id: 'Q3',
+    alreadyAnswered: false
   },
   {
-    question: {title: 'C\'est une 4 kestion'},
-    answer: {type: 'textArea', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]}
+    question: {title: 'Question 4'},
+    answer: {type: 'textArea', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
+    id: 'Q4',
+    alreadyAnswered: false
+  },
+  {
+    question: {title: 'Question 5'},
+    answer: {type: 'checkBox', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
+    id: 'Q5',
+    alreadyAnswered: true
   }
 ]
 

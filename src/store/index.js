@@ -17,7 +17,7 @@ export const store = new Vuex.Store({
     addQuestion (state, txt) {
       this.state.questions.push(
         {
-          id: this.state.nbQ++,
+          id: this.state.idQ++,
           text: txt
         }
       )

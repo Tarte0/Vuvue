@@ -1,5 +1,5 @@
 <template>
-    <button @click="$emit('remove')">
+    <button @click="$emit('remove', '')">
       X
     </button>
 </template>
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style scoped>
-
+button {
+  background-color: #ff2631;
+}
 </style>

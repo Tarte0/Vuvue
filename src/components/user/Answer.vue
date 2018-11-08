@@ -15,7 +15,7 @@
       </div>
     </div>
     <div v-else class="alreadyAnsweredDiv">
-      <h3>Cette question à deja une réponse</h3>
+      <h3>Cette question a déjà une réponse</h3>
     </div>
   </div>
 </template>

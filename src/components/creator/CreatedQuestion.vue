@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- {{ question.text }}  -->
-    <EditableText  :text="question.text" :editable="editable" @EditBoolValue="retrunEdit"/>
+    <EditableText  :text="question.text" :editable="editable" @EditBoolValue="returnEdit"/>
     <remove-button @remove="removeQuestion"/>
     <edit-button @edit="activeEdit"/>
   </div>
@@ -33,8 +33,9 @@ export default {
     activeEdit () {
       this.editable = true
     },
-    retrunEdit (value) {
+    returnEdit (value) {
       this.question.text = value
+      this.$store.commit('editQuestion', {'id': this.question.id, 'text': value})
       this.editable = false
     }
   }

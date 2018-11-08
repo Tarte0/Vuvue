@@ -15,7 +15,6 @@ import BaseInputQuestion from './BaseInputQuestion'
 export default {
   name: 'EditableText',
   components: {BaseInputQuestion},
-  msg: 'blabla',
   props: ['text', 'editable'],
   methods: {
     changeEditableValue () {
@@ -23,7 +22,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style scoped>

@@ -28,10 +28,10 @@ export const store = new Vuex.Store({
         return question.id !== idToRemove
       })
     },
-    editQuestion (state, idToModif, newValue) {
-      this.state.questions.find(function (elem) {
-        return elem.id === idToModif
-      }).text = newValue
+    editQuestion (state, question) {
+      console.log(question.id)
+      console.log(question.text)
+      this.state.questions.find(O => O.id === question.id).text = question.text
     }
   }
 })

@@ -12,7 +12,6 @@
     </button>
     <base-input-question v-else
                          v-model="newQuestionText"
-                         placeholder="new Question"
                          @keydown.enter="addQuestion"
     />
   </div>

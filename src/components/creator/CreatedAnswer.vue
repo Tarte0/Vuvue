@@ -8,7 +8,7 @@
 <script>
 import EditButton from './EditButton'
 export default {
-  name: 'reponseC',
+  name: 'Canswer',
   components: {EditButton},
   props: {
     type: Object,

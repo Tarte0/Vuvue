@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <li>
     <c-question
       :question="question"
       @edit="editQuestion"
     />
     <br/>
     <c-answer/>
-  </div>
+  </li>
 </template>
 
 <script>

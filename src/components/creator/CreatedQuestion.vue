@@ -1,9 +1,9 @@
 <template>
-  <li>
+  <div>
     {{ question.text }}
     <remove-button @remove="removeQuestion"/>
     <edit-button @edit="editQuestion"/>
-  </li>
+  </div>
 </template>
 
 <script>
@@ -11,7 +11,7 @@ import RemoveButton from './RemoveButton'
 import EditButton from './EditButton'
 
 export default {
-  name: 'questionC',
+  name: 'CQuestion',
   components: {EditButton, RemoveButton},
   props: {
     question: {

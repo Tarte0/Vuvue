@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Stev from '@/components/Stev'
 import Form from '@/components/creator/Form'
-import Answer from '@/components/user/Answer'
+import UserForm from '@/components/user/UserForm'
 
 Vue.use(Router)
 
@@ -25,9 +25,9 @@ export default new Router({
       component: Form
     },
     {
-      path: '/Answers',
-      name: 'Answers',
-      component: Answer
+      path: '/user/form',
+      name: 'form',
+      component: UserForm
     }
   ]
 })

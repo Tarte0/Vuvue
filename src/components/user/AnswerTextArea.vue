@@ -1,12 +1,17 @@
 <template>
     <div>
-      <textArea/>
+      <textarea v-model="selectedAnswers"></textarea>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'AnswerTextArea'
+  name: 'AnswerTextArea',
+  data () {
+    return {
+      selectedAnswers: null
+    }
+  }
 }
 </script>
 

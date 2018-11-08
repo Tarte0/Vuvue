@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div v-if = "type === 'textArea'">
+    <div v-if="answer.type === 'textArea'">
       <AnswerTextArea/>
     </div>
-    <div v-if = "type === 'text'">
+    <div v-if="answer.type === 'text'">
       <AnswerText/>
     </div>
-    <div v-if = "type === 'radioButton'">
-      <AnswerRadioButton :answers="answers"/>
+    <div v-if="answer.type === 'radioButton'">
+      <AnswerRadioButton :answers="answer.answers"/>
     </div>
-    <div v-if = "type === 'checkBox'">
-      <AnswerCheckBox :answers="answers"/>
+    <div v-if="answer.type === 'checkBox'">
+      <AnswerCheckBox :answers="answer.answers"/>
     </div>
   </div>
 
@@ -24,12 +24,7 @@ import AnswerCheckBox from './AnswerCheckBox'
 export default {
   name: 'Answer',
   components: {AnswerText, AnswerTextArea, AnswerRadioButton, AnswerCheckBox},
-  data () {
-    return {
-      type: 'checkBox',
-      answers: [{text: 'zizou'}, {text: 'keke'}]
-    }
-  }
+  props: ['answer']
 }
 </script>
 

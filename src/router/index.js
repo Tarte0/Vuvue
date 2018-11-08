@@ -15,11 +15,6 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/stev',
-      name: 'stev',
-      component: Stev
-    },
-    {
       path: '/Creator',
       name: 'Creator',
       component: Form

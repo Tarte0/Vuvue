@@ -2,7 +2,6 @@
   <li>
     <c-question
       :question="question"
-      @edit="editQuestion"
     />
     <br/>
     <c-answer/>

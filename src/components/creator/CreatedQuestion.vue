@@ -34,7 +34,6 @@ export default {
       this.editable = true
     },
     returnEdit (value) {
-      this.question.text = value
       this.$store.commit('editQuestion', {'id': this.question.id, 'text': value})
       this.editable = false
     }

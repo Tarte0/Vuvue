@@ -1,12 +1,17 @@
 <template>
     <div>
-      <input type="text"/>
+      <input type="text" v-model="selectedAnswers"/>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'AnswerText'
+  name: 'AnswerText',
+  data () {
+    return {
+      selectedAnswers: null
+    }
+  }
 }
 </script>
 

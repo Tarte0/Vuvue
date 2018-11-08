@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div v-for="answer in answers" :key="answer.text">
-      <input type="radio" name = "answer.text" :key="answer.text" v-model = "selectedAnswers">
-      {{answer.text}}
-    </div>
+    <form>
+      <span v-for="(a, i) in answers" :key="a.text">
+        <input type="radio" :name="a.text" :value="i" v-model="selectedAnswers">
+        <label> {{a.text}} </label>
+      </span>
+    </form>
   </div>
 </template>
 
@@ -12,7 +14,7 @@ export default {
   name: 'AnswerRadioButton',
   data () {
     return {
-      selectedAnswers: []
+      selectedAnswers: null
     }
   },
   props: ['answers']

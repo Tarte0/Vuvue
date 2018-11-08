@@ -1,18 +1,25 @@
 <template>
   <div>
-    {{ question.text }}
+    <!-- {{ question.text }}  -->
+    <EditableText  :text="question.text" :editable="editable" @EditBoolValue="retrunEdit"/>
     <remove-button @remove="removeQuestion"/>
-    <edit-button @edit="editQuestion"/>
+    <edit-button @edit="activeEdit"/>
   </div>
 </template>
 
 <script>
 import RemoveButton from './RemoveButton'
 import EditButton from './EditButton'
+import EditableText from './EditableText'
 
 export default {
-  name: 'CQuestion',
-  components: {EditButton, RemoveButton},
+  name: 'questionC',
+  data () {
+    return {
+      editable: false
+    }
+  },
+  components: {EditButton, RemoveButton, EditableText},
   props: {
     question: {
       type: Object,
@@ -23,7 +30,12 @@ export default {
     removeQuestion () {
       this.$store.commit('removeQuestion', this.question.id)
     },
-    editQuestion () {
+    activeEdit () {
+      this.editable = true
+    },
+    retrunEdit (value) {
+      this.question.text = value
+      this.editable = false
     }
   }
 }

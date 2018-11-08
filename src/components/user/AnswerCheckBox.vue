@@ -2,8 +2,8 @@
   <div>
     <form>
       <span v-for="(a, i) in answers" :key="a.text">
-        <input type="checkBox" :name="a.text" :value="i" v-on:input="checkBoxChange($event.target)">
-        <label> {{a.text}} </label>
+        <label>  <input type="checkBox" :name="a.text" :value="i" v-on:input="onChange($event.target)">
+        {{a.text}} </label>
       </span>
     </form>
   </div>
@@ -12,20 +12,24 @@
 <script>
 export default {
   name: 'AnswerCheckBox',
-  props: ['answers'],
+  props: ['answers', 'entryID'],
   data () {
     return {
       selectedAnswers: []
     }
   },
   methods: {
-    checkBoxChange: function (target) {
+    onChange: function (target) {
       const index = this.selectedAnswers.indexOf(target.value)
       if (index >= 0) {
         if (!target.checked) this.selectedAnswers.splice(index, 1)
       } else {
         this.selectedAnswers.push(target.value)
       }
+      this.setSelectedAnswers()
+    },
+    setSelectedAnswers: function () {
+      this.$root.$emit('set-selected-answers', this.entryID, this.selectedAnswers)
     }
   }
 }

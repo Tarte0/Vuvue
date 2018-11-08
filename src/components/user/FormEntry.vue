@@ -1,7 +1,7 @@
 <template>
-    <div>
-      <QuestionTitle :question="question"/>
-      <Answer :answer="answer"/>
+    <div class="formEntry">
+      <QuestionTitle :question="entry.question"/>
+      <Answer :answer="entry.answer" :entryID="entry.id" :alreadyAnswered="entry.alreadyAnswered"/>
     </div>
 </template>
 
@@ -11,16 +11,14 @@ import Answer from '@/components/user/Answer'
 export default {
   name: 'FormEntry',
   components: {Answer, QuestionTitle},
-  props: ['question', 'answer']
-  /* data () {
-    return {
-      question: {title: 'C\'est une kestion'},
-      answer: {type: 'radioButton', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]}
-    }
-  } */
+  props: ['entry']
 }
 </script>
 
 <style scoped>
-
+  .formEntry{
+    background-color: #f6f6f6;
+    margin: 1em;
+    border: 1px solid #00000020
+  }
 </style>

@@ -10,13 +10,24 @@ import EditButton from './EditButton'
 export default {
   name: 'Canswer',
   components: {EditButton},
+  data (){
+    return {
+      type,
+      answers: [
+      ]
+    }
+  },
   props: {
-    type: Object,
+    id,
     required: true
   },
   methods: {
     editAnswer () {
     }
+  },
+  created (){
+    this.type = "textArea"
+    this.$store.dispatch('addAnswer', {id: this.id, type: this.type, answers: this.answers })
   }
 }
 </script>

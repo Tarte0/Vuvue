@@ -1,19 +1,22 @@
 <template>
   <div>
     <ul>
-      <QuestionCreator
-        v-for="q in this.$store.state.questions"
-        :key="q.id"
-        :question="q"
-      />
+      <li>
+        <QuestionCreator
+          v-for="q in this.$store.state.questions"
+          :key="q.id"
+          :question="q"
+        />
+        <button v-if="!afficheCreate" @click="showAdd">
+          +
+        </button>
+        <base-input-question v-else
+                             v-model="newQuestionText"
+                             placeholder="new Question"
+                             @keydown.enter="addQuestion"
+        />
+      </li>
     </ul>
-    <button v-if="!afficheCreate" @click="showAdd">
-      +
-    </button>
-    <base-input-question v-else
-                         v-model="newQuestionText"
-                         @keydown.enter="addQuestion"
-    />
   </div>
 </template>
 

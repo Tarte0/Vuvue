@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <!-- {{ question.text }}  -->
-    <EditableText  :text="question.text" :editable="editable" @EditBoolValue="returnEdit"/>
+  <li>
+    {{ question.text }}
     <remove-button @remove="removeQuestion"/>
-    <edit-button @edit="activeEdit"/>
-  </div>
+    <edit-button @edit="editQuestion"/>
+  </li>
 </template>
 
 <script>

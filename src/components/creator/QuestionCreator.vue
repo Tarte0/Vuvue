@@ -1,11 +1,13 @@
 <template>
-  <li>
+  <div>
     <c-question
       :question="question"
     />
     <br/>
-    <c-answer/>
-  </li>
+    <c-answer
+      :id="question.id"
+    />
+  </div>
 </template>
 
 <script>

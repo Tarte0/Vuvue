@@ -11,13 +11,16 @@ export const store = new Vuex.Store({
         id: 0,
         text: 'Test Question ?'
       }
+    ],
+    answers:[
+
     ]
   },
   mutations: {
     addQuestion (state, txt) {
       this.state.questions.push(
         {
-          id: this.state.idQ++,
+          id: this.state.nbQ++,
           text: txt
         }
       )
@@ -28,10 +31,16 @@ export const store = new Vuex.Store({
         return question.id !== idToRemove
       })
     },
-    editQuestion (state, question) {
-      console.log(question.id)
-      console.log(question.text)
-      this.state.questions.find(O => O.id === question.id).text = question.text
+    addAnswer (state, answer) {
+      this.state.answers.push(answer)
+    }
+  },
+  actions: {
+    addQuestion (){
+
+    },
+    addAnswer( {commit}, answer){
+      this.commit('addAnswer', answer);
     }
   }
 })

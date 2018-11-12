@@ -18,6 +18,7 @@
       <h3>Cette question a déjà une réponse</h3>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -25,9 +26,10 @@ import AnswerTextArea from './AnswerTextArea'
 import AnswerText from './AnswerText'
 import AnswerRadioButton from './AnswerRadioButton'
 import AnswerCheckBox from './AnswerCheckBox'
+import AnswerSelect from './AnswerSelect'
 export default {
   name: 'Answer',
-  components: {AnswerText, AnswerTextArea, AnswerRadioButton, AnswerCheckBox},
+  components: {AnswerText, AnswerTextArea, AnswerRadioButton, AnswerCheckBox, AnswerSelect},
   props: ['answer', 'entryID', 'alreadyAnswered']
 }
 </script>

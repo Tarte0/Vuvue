@@ -4,7 +4,7 @@ import FormEntry from '@/components/user/FormEntry'
 const mockEntry =
   {
     question: {title: 'Question 1'},
-    answer: {type: 'radioButton', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
+    answer: {type: 'checkbox', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}, {text: 'd'}, {text: 'e'}]},
     id: 'Q1',
     alreadyAnswered: false
   }
@@ -20,8 +20,8 @@ describe('FormEntry.vue', () => {
     expect(vm.$el.querySelector('#title').textContent)
       .toEqual(mockEntry.question.title)
   })
-  it('answer input type should be same as mock (radio)', () => {
+  it('answer input type should be same as mock (checkbox)', () => {
     expect(vm.$el.querySelector('.answer input').type)
-      .toEqual('radio')
+      .toEqual('checkbox')
   })
 })

@@ -9,6 +9,7 @@
 
 <script>
 import FormEntry from '@/components/user/FormEntry'
+import {setSelectedAnswersFB} from '@/thunks/formEntriesThunks'
 export default {
   name: 'UserForm',
   components: {FormEntry},
@@ -19,7 +20,10 @@ export default {
   },
   computed: {
     formEntries () {
-      return this.$store.state.formEntries
+      return this.$store.getters.getFormEntries
+    },
+    formID () {
+      return this.$store.getters.getFormID
     }
   },
   created: function () {
@@ -34,7 +38,7 @@ export default {
       this.selectedAnswers = tmp
     },
     saveAnswers () {
-      console.log(this.selectedAnswers)
+      setSelectedAnswersFB(this.formID, this.selectedAnswers)
     }
   }
 }

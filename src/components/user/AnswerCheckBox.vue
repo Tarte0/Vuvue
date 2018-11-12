@@ -2,7 +2,7 @@
   <div>
     <form>
       <span v-for="(a, i) in answers" :key="a.text">
-        <label>  <input type="checkBox" :name="a.text" :value="i" v-on:input="onChange($event.target)">
+        <label>  <input type="checkbox" :name="a.text" :value="i" v-on:input="onChange($event.target)">
         {{a.text}} </label>
       </span>
     </form>

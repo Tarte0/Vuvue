@@ -10,8 +10,11 @@
       <div v-if="answer.type === 'radioButton'">
         <AnswerRadioButton :answers="answer.answers" :entryID="entryID"/>
       </div>
-      <div v-if="answer.type === 'checkBox'">
+      <div v-if="answer.type === 'checkbox'">
         <AnswerCheckBox :answers="answer.answers" :entryID="entryID"/>
+      </div>
+      <div v-if="answer.type === 'select'">
+        <AnswerSelect :answers="answer.answers" :entryID="entryID"/>
       </div>
     </div>
     <div v-else class="alreadyAnsweredDiv">
@@ -25,9 +28,10 @@ import AnswerTextArea from './AnswerTextArea'
 import AnswerText from './AnswerText'
 import AnswerRadioButton from './AnswerRadioButton'
 import AnswerCheckBox from './AnswerCheckBox'
+import AnswerSelect from './AnswerSelect'
 export default {
   name: 'Answer',
-  components: {AnswerText, AnswerTextArea, AnswerRadioButton, AnswerCheckBox},
+  components: {AnswerText, AnswerTextArea, AnswerRadioButton, AnswerCheckBox, AnswerSelect},
   props: ['answer', 'entryID', 'alreadyAnswered']
 }
 </script>

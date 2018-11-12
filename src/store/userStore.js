@@ -1,45 +1,34 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import Firebase from 'firebase'
 
 Vue.use(Vuex)
 
-const formEntries = [
-  {
-    question: {title: 'Question 1'},
-    answer: {type: 'radioButton', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
-    id: 'Q1',
-    alreadyAnswered: false
-  },
-  {
-    question: {title: 'Question 2'},
-    answer: {type: 'checkBox', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
-    id: 'Q2',
-    alreadyAnswered: false
-  },
-  {
-    question: {title: 'Question 3'},
-    answer: {type: 'text', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
-    id: 'Q3',
-    alreadyAnswered: false
-  },
-  {
-    question: {title: 'Question 4'},
-    answer: {type: 'textArea', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
-    id: 'Q4',
-    alreadyAnswered: false
-  },
-  {
-    question: {title: 'Question 5'},
-    answer: {type: 'checkBox', answers: [{text: 'a'}, {text: 'b'}, {text: 'c'}]},
-    id: 'Q5',
-    alreadyAnswered: true
-  }
-]
-
 export const userStore = new Vuex.Store({
   state: {
-    formEntries
+    formEntries: [],
+    formID: 'f1'
   },
-  actions: {},
-  mutations: {}
+  getters: {
+    getFormEntries: state => {
+      return state.formEntries
+    },
+    getFormID: state => {
+      return state.formID
+    }
+  },
+  mutations: {
+    setFormEntries: state => {
+      Firebase.database().ref('createdForms/'.concat(state.formID).concat('/entries'))
+        .on('value', function (snapshot) {
+          const value = snapshot.val()
+          state.formEntries = Object.keys(value).map(formEntryKey => value[formEntryKey])
+        })
+    }
+  },
+  actions: {
+    setFormEntries: context => {
+      context.commit('setFormEntries')
+    }
+  }
 })

@@ -1,29 +1,30 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Firebase from 'firebase'
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
+    idform: "f1",
     idQ: 1,
     questions: [
       {
-        id: 0,
-        text: 'Test Question ?'
+        id: 1,
+        text: 'test'
       }
     ],
     answers:[
-
     ]
   },
+  getters:{
+    getQuestionList: state => {
+      return state.questions
+    },
+  },
   mutations: {
-    addQuestion (state, txt) {
-      this.state.questions.push(
-        {
-          id: this.state.nbQ++,
-          text: txt
-        }
-      )
+    addQuestion (state, questionText) {
+      this.state.questions.push({text: questionText,id: idQ++ })
     },
     removeQuestion (state, idToRemove) {
       console.log(idToRemove)
@@ -36,11 +37,14 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
-    addQuestion (){
-
+    addQuestion ({commit}, questionText){
+      this.commit('addQuestion', questionText)
     },
     addAnswer( {commit}, answer){
       this.commit('addAnswer', answer);
-    }
+    },
+    removeQuestion({commit}, idToRemove){
+      this.commit('removeQuestion', idToRemove)
+    },
   }
 })

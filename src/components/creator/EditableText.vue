@@ -1,13 +1,8 @@
 <template>
-  <div>
-    <div v-if = "editable">
-        <base-input-question type ="text" :v-model="text" :value="text" @keydown.enter="changeEditableValue"/>
-    </div>
-    <div v-else>
+    <base-input-question v-if = "editable" type ="text" :v-model="text" :value="text" @keydown.enter="changeEditableValue"/>
+    <span v-else>
         {{text}}
-    </div>
-  </div>
-
+    </span>
 </template>
 
 <script>

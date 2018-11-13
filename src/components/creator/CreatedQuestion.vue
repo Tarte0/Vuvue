@@ -1,9 +1,9 @@
 <template>
-  <li>
-    {{ question.text }}
+  <div>
+    <EditableText  :text="question.text" :editable="editable" @EditBoolValue="returnEdit"/>
     <remove-button @remove="removeQuestion"/>
-    <edit-button @edit="editQuestion"/>
-  </li>
+    <edit-button @edit="activeEdit"/>
+  </div>
 </template>
 
 <script>
@@ -27,13 +27,13 @@ export default {
   },
   methods: {
     removeQuestion () {
-      this.$store.commit('removeQuestion', this.question.id)
+      this.$store.dispatch('removeQuestion', this.question.id)
     },
     activeEdit () {
       this.editable = true
     },
     returnEdit (value) {
-      this.$store.commit('editQuestion', {'id': this.question.id, 'text': value})
+      this.$store.dispatch('editQuestion', {'id': this.question.id, 'text': value})
       this.editable = false
     }
   }

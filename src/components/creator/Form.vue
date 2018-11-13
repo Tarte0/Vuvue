@@ -1,22 +1,20 @@
 <template>
   <div>
-    <ul>
-      <li>
+    <div v-for="q in questions"
+          :key="q.id">
         <QuestionCreator
-          v-for="q in this.$store.state.questions"
-          :key="q.id"
           :question="q"
+          :answer="answer(q.id)"
         />
-        <button v-if="!afficheCreate" @click="showAdd">
-          +
-        </button>
-        <base-input-question v-else
-                             v-model="newQuestionText"
-                             placeholder="new Question"
-                             @keydown.enter="addQuestion"
-        />
-      </li>
-    </ul>
+    </div>
+    <button v-if="!afficheCreate" @click="showAdd">
+      +
+    </button>
+    <base-input-question v-else
+                         v-model="newQuestionText"
+                         placeholder="new Question"
+                         @keydown.enter="addQuestion"
+    />
   </div>
 </template>
 
@@ -32,6 +30,11 @@ export default {
       afficheCreate: false
     }
   },
+  computed: {
+    questions () {
+      return this.$store.getters.getQuestionList
+    }
+  },
   components: {QuestionCreator, BaseInputQuestion},
   methods: {
     showAdd () {
@@ -40,10 +43,13 @@ export default {
     addQuestion () {
       const txt = this.newQuestionText
       if (txt) {
-        this.$store.commit('addQuestion', txt)
+        this.$store.dispatch('addQuestion', txt)
       }
       this.newQuestionText = ''
       this.afficheCreate = false
+    },
+    answer (id) {
+      return this.$store.getters.findAnswer(id)
     }
   }
 }

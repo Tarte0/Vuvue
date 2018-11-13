@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <div class="question">
     <c-question
       :question="question"
     />
-    <br/>
     <c-answer
-      :id="question.id"
+      :answer="answer"
     />
   </div>
 </template>
@@ -31,5 +30,6 @@ export default {
 </script>
 
 <style scoped>
-
+.question{
+}
 </style>

@@ -12,6 +12,5 @@ export default {
 
 <style scoped>
 button {
-  background-color: darkgoldenrod;
 }
 </style>

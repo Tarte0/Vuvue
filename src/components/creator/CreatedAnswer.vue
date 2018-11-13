@@ -1,37 +1,42 @@
 <template>
-  <div>
-    Answer's type
-    <edit-button @edit="editAnswer"/>
+  <div class="answerC">
+    <ChoiceAnswerType @chosenType="choseType"/>
+    <p> Answer's type : {{ answer.type }}</p>
+    <!-- Config Component -->
   </div>
 </template>
 
 <script>
 import EditButton from './EditButton'
+import ChoiceAnswerType from './ChoiceAnswerType'
 export default {
   name: 'Canswer',
-  components: {EditButton},
-  data (){
+  components: {ChoiceAnswerType, EditButton},
+  data () {
     return {
-      type,
       answers: [
       ]
     }
   },
   props: {
-    id,
-    required: true
-  },
-  methods: {
-    editAnswer () {
+    answer: {
+      type: Object,
+      required: true
     }
   },
-  created (){
-    this.type = "textArea"
-    this.$store.dispatch('addAnswer', {id: this.id, type: this.type, answers: this.answers })
+  methods: {
+    choseType (type) {
+      this.$store.dispatch('modifyAnswer', { id: this.answer.id, type: type, answers: this.answers })
+      // this.type = type
+    }
   }
 }
 </script>
 
 <style scoped>
-
+.answerC{
+  background-color: #f6f6f6;
+  margin: 1em;
+  border: 1px solid #00000020
+}
 </style>

@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default {
   state: {
     formEntries: [],
-    formID: 'f1'
+    formID: ''
   },
   getters: {
     getFormEntries: state => {
@@ -22,12 +22,20 @@ export default {
       Firebase.database().ref('createdForms/'.concat(state.formID).concat('/entries'))
         .on('value', function (snapshot) {
           const value = snapshot.val()
-          state.formEntries = Object.keys(value).map(formEntryKey => value[formEntryKey])
+          if (value) state.formEntries = Object.keys(value).map(formEntryKey => value[formEntryKey])
+          else state.formEntries = null
         })
+    },
+    setFormID: (state, {formID}) => {
+      state.formID = formID
     }
   },
   actions: {
     setFormEntries: context => {
+      context.commit('setFormEntries')
+    },
+    setFormID: (context, {formID}) => {
+      context.commit('setFormID', {formID})
       context.commit('setFormEntries')
     }
   }

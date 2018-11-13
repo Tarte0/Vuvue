@@ -10,7 +10,7 @@
       <div v-if="answer.type === 'radioButton'">
         <AnswerRadioButton :answers="answer.answers" :entryID="entryID"/>
       </div>
-      <div v-if="answer.type === 'checkBox'">
+      <div v-if="answer.type === 'checkbox'">
         <AnswerCheckBox :answers="answer.answers" :entryID="entryID"/>
       </div>
     </div>

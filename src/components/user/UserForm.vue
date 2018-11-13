@@ -1,9 +1,12 @@
 <template>
-  <div class="form">
+  <div class="form" v-if="formEntries" >
     <FormEntry v-for="entry in formEntries"
                :key="entry.id"
                :entry="entry"/>
     <button @click="saveAnswers">Enregistrer</button>
+  </div>
+  <div v-else>
+    <h1 class="errorMessage">Formulaire inconnu !</h1>
   </div>
 </template>
 
@@ -30,6 +33,7 @@ export default {
     this.$root.$on('set-selected-answers', (id, answers) => {
       this.setSelectedAnswers(id, answers)
     })
+    this.$store.dispatch('setFormID', {formID: this.$route.params.formID})
   },
   methods: {
     setSelectedAnswers (id, answers) {
@@ -40,10 +44,15 @@ export default {
     saveAnswers () {
       setSelectedAnswersFB(this.formID, this.selectedAnswers)
     }
+  },
+  watch: {
+    '$route' (to, from) {
+      this.$store.dispatch('setFormID', {formID: this.$route.params.formID})
+    }
   }
 }
 </script>
 
 <style scoped>
-  .form {}
+  .errorMessage {}
 </style>

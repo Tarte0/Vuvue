@@ -27,7 +27,6 @@ export default {
   methods: {
     choseType (type) {
       this.$store.dispatch('modifyAnswer', { id: this.answer.id, type: type, answers: this.answers })
-      // this.type = type
     }
   }
 }

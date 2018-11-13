@@ -14,8 +14,8 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/Creator',
-      name: 'Creator',
+      path: '/creator',
+      name: 'creator',
       component: Form
     },
     {

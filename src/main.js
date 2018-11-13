@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {userStore} from './store/userStore'
+import store from './store'
 import {firebaseConfig} from '../private/firebaseConfig'
 import Firebase from 'firebase'
 
@@ -15,7 +15,7 @@ Firebase.initializeApp(firebaseConfig)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  store: userStore,
+  store: store,
   router,
   components: { App },
   template: '<App/>',

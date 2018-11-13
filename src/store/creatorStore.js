@@ -1,50 +1,85 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Firebase from 'firebase'
 
 Vue.use(Vuex)
 
-export const store = new Vuex.Store({
+export default {
   state: {
-    idform: "f1",
     idQ: 1,
     questions: [
-      {
-        id: 1,
-        text: 'test'
-      }
     ],
-    answers:[
+    answers: [
     ]
   },
-  getters:{
+  getters: {
     getQuestionList: state => {
       return state.questions
     },
+    getAnswerList: state => {
+      return state.answers
+    },
+    findAnswer: (state) => (id) => {
+      return state.answers.find(function (elem) {
+        return elem.id === id
+      })
+    }
   },
   mutations: {
-    addQuestion (state, questionText) {
-      this.state.questions.push({text: questionText,id: idQ++ })
+    addQuestion (state, txt) {
+      let id = state.idQ++
+      console.log('add', id)
+      state.questions.push(
+        {
+          id: id,
+          text: txt
+        }
+      )
+      state.answers.push(
+        {
+          id: id,
+          type: 'Text',
+          answers: []
+        }
+      )
+      console.log('q', state.answers)
     },
     removeQuestion (state, idToRemove) {
       console.log(idToRemove)
-      this.state.questions = this.state.questions.filter(question => {
+      state.questions = state.questions.filter(question => {
         return question.id !== idToRemove
       })
     },
+    editQuestion (state, question) {
+      state.questions.find(function (elem) {
+        return elem.id === question.id
+      }).text = question.text
+    },
     addAnswer (state, answer) {
-      this.state.answers.push(answer)
+      state.answers.push(answer)
+    },
+    modifyAnswer (state, answer) {
+      let E = state.answers.find(function (elem) {
+        return elem.id === answer.id
+      })
+      E.type = answer.type
+      E.answers = answer.answers
     }
   },
   actions: {
-    addQuestion ({commit}, questionText){
+    addQuestion ({commit}, questionText) {
       this.commit('addQuestion', questionText)
     },
-    addAnswer( {commit}, answer){
-      this.commit('addAnswer', answer);
+    addAnswer ({commit}, answer) {
+      this.commit('addAnswer', answer)
     },
-    removeQuestion({commit}, idToRemove){
+    modifyAnswer ({commit}, answer) {
+      this.commit('modifyAnswer', answer)
+    },
+    removeQuestion ({commit}, idToRemove) {
       this.commit('removeQuestion', idToRemove)
     },
+    editQuestion ({commit}, question) {
+      this.commit('editQuestion', question)
+    }
   }
-})
+}

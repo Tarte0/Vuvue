@@ -1,6 +1,8 @@
 <template>
   <div>
+    <form>
       <input v-for="T in types" :key=T class="choices" type="button" :value=T @click="$emit('chosenType', T)"/>
+    </form>
   </div>
 </template>
 
@@ -17,7 +19,6 @@ export default {
 
 <style scoped>
 .choices {
-  width: 100px;
-  height: 30px;
+  width:7%;
 }
 </style>

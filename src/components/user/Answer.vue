@@ -7,11 +7,14 @@
       <div v-if="answer.type === 'text'">
         <AnswerText :entryID="entryID"/>
       </div>
-      <div v-if="answer.type === 'radioButton'">
+      <div v-if="answer.type === 'radiobutton'">
         <AnswerRadioButton :answers="answer.answers" :entryID="entryID"/>
       </div>
       <div v-if="answer.type === 'checkbox'">
         <AnswerCheckBox :answers="answer.answers" :entryID="entryID"/>
+      </div>
+      <div v-if="answer.type === 'select'">
+        <AnswerSelect :answers="answer.answers" :entryID="entryID"/>
       </div>
     </div>
     <div v-else class="alreadyAnsweredDiv">

@@ -3,7 +3,7 @@
     <form>
       <select @change="onChange($event.target)">
         <option value="-1"> </option>
-         <option v-for="(a, i) in answers" :key="a.text" :name="a.text" :value="i"> {{a.text}} </option>
+        <option v-for="(a, i) in answers" :key="a.text" :name="a.text" :value="i"> {{a.text}} </option>
       </select>
     </form>
   </div>
@@ -20,7 +20,8 @@ export default {
   props: ['answers', 'entryID'],
   methods: {
     onChange: function (target) {
-      if (target.value > 0) {
+      if (target.value >= 0) {
+        console.log(target.value)
         this.selectedAnswers = target.value
         this.setSelectedAnswers()
       } else {
@@ -28,12 +29,11 @@ export default {
       }
     },
     setSelectedAnswers: function () {
-      this.$root.$emit('set-selected-answers', this.entryID, this.selectedAnswers)
+      if (this.selectedAnswers != null) this.$root.$emit('set-selected-answers', this.entryID, this.selectedAnswers)
     }
   }
 }
 </script>
 
 <style scoped>
-
 </style>

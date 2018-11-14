@@ -1,7 +1,7 @@
 <template>
   <div class="answer">
     <div v-if="!alreadyAnswered">
-      <div v-if="answer.type === 'textArea'">
+      <div v-if="answer.type === 'textarea'">
         <AnswerTextArea :entryID="entryID"/>
       </div>
       <div v-if="answer.type === 'text'">
